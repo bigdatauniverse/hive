@@ -15,13 +15,13 @@ STORED AS TEXTFILE;
 --mkdir -p ~/demo/data/cards
 --copy file deckofcards.txt to ~/demo/data/cards
 -- Load data from local file system into hive table (append to existing table)
-LOAD DATA LOCAL INPATH '/home/debabratarc916674/deba/deck_of_cards.txt' OVERWRITE INTO TABLE deck_of_cards;
+LOAD DATA LOCAL INPATH '/home/debabratarc916674/deba/deck_of_cards.txt' INTO TABLE deck_of_cards;
 
 --Load data from HDFS into hive table (append data to existing table), file user /user/root/cards will be deleted
-LOAD DATA INPATH '/user/root/cards/deckofcards.txt' INTO TABLE deck_of_cards;
+LOAD DATA INPATH '/home/debabratarc916674/deba/deck_of_cards.txt' INTO TABLE deck_of_cards;
 
 -- Loads data from local file system (overwrite existing data)
-LOAD DATA LOCAL INPATH '/root/demo/data/cards/deckofcards.txt' OVERWRITE INTO TABLE deck_of_cards;
+LOAD DATA LOCAL INPATH '/home/debabratarc916674/deba/deck_of_cards.txt' OVERWRITE INTO TABLE deck_of_cards;
 
 CREATE EXTERNAL TABLE deck_of_cards_external (
 COLOR string,
@@ -29,7 +29,7 @@ SUIT string,
 PIP string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|'
 STORED AS TEXTFILE
-LOCATION '/apps/hive/warehouse/cards.db/deck_of_cards';
+LOCATION '/home/debabratarc916674/deba/deck_of_cards.txt';
 
 -- Create ods and edw database for retail_db@mysql
 -- CREATE DATABASE IF NOT EXISTS retail_ods;
